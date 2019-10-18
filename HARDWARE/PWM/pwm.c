@@ -1,6 +1,6 @@
 #include "pwm.h"
 #include "led.h"
-
+#include "stm32f10x.h"
 void two_servo_init(u16 arr,u16 psc)
 {  
 	 GPIO_InitTypeDef GPIO_InitStructure;
@@ -119,7 +119,7 @@ void servo_2(u8 dir){
 	}
 }
 
-void motor_1(){
+void motor_1(void){
 		TIM_SetCompare1(TIM2,speed);
 		TIM_SetCompare1(TIM2,0);
 		TIM_SetCompare2(TIM2,speed);
@@ -129,7 +129,7 @@ void motor_1(){
 		TIM_SetCompare4(TIM2,speed);
 		TIM_SetCompare4(TIM2,0);
 }
-void motor_1_r(){
+void motor_1_r(void){
 		TIM_SetCompare4(TIM2,speed);
 		TIM_SetCompare4(TIM2,0);
 		TIM_SetCompare3(TIM2,speed);
@@ -139,7 +139,7 @@ void motor_1_r(){
 		TIM_SetCompare1(TIM2,speed);
 		TIM_SetCompare1(TIM2,0);
 }
-void motor_2(){
+void motor_2(void){
 		TIM_SetCompare1(TIM3,speed);
 		TIM_SetCompare1(TIM3,0);
 		TIM_SetCompare2(TIM3,speed);
@@ -149,7 +149,7 @@ void motor_2(){
 		TIM_SetCompare4(TIM3,speed);
 		TIM_SetCompare4(TIM3,0);
 }
-void motor_2_r(){
+void motor_2_r(void){
 		TIM_SetCompare4(TIM3,speed);
 		TIM_SetCompare4(TIM3,0);
 		TIM_SetCompare3(TIM3,speed);

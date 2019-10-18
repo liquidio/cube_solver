@@ -1,15 +1,13 @@
 #include "led.h"
-#include "delay.h"
-#include "sys.h"
 #include "pwm.h"
 #include "usart.h"
+#include "stm32f10x.h"
 //#define DEBUG
 extern u8  USART_RX_BUF[USART_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
 extern u16 USART_RX_STA;         		//接收状态标记	
  int main(void)
  {	
 	u16 i=0;
-	delay_init();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);// 2
 	uart_init(115200);
 	LED_Init();

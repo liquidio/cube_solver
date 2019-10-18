@@ -1,10 +1,6 @@
-#include "sys.h"
 #include "usart.h"	 
+#include "stm32f10x_gpio.h"
 
-#if SYSTEM_SUPPORT_OS
-#include "includes.h"					//ucos 使用	  
-#endif
-#if 1
 #pragma import(__use_no_semihosting)             
 //标准库需要的支持函数                 
 struct __FILE 
@@ -25,7 +21,6 @@ int fputc(int ch, FILE *f)
     USART1->DR = (u8) ch;      
 	return ch;
 }
-#endif 
 
  
  
@@ -83,9 +78,6 @@ void uart_init(u32 bound){
 void USART1_IRQHandler(void)                	//串口1中断服务程序
 	{
 	u8 Res;
-#if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntEnter();    
-#endif
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 		{
 		Res =USART_ReceiveData(USART1);	//读取接收到的数据
@@ -110,9 +102,6 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 				}
 			}   		 
      } 
-#if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntExit();  											 
-#endif
 } 
 #endif	
 
