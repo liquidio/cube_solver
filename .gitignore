@@ -1,6 +1,9 @@
+#MDK
 USER/*
 !USER/*.[ch]
 *.bat
+/OBJ
+
 # Prerequisites
 *.d
 
