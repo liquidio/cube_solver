@@ -1,3 +1,6 @@
+/USER
+!USER/*.[ch]
+*.bat
 # Prerequisites
 *.d
 
