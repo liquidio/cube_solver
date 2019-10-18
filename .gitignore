@@ -1,4 +1,4 @@
-/USER
+USER/*
 !USER/*.[ch]
 *.bat
 # Prerequisites
